@@ -55,3 +55,10 @@ h2 {
 a:hover {
 	color: var(--primary-color);
 }
+
+button.btn {
+	cursor: pointer;
+	background: var(--primary-color);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
