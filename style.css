@@ -30,6 +30,15 @@ main.root {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+
+	padding: 1rem;
+}
+main.root ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	padding: 1rem;
 }
 
 h1 {
