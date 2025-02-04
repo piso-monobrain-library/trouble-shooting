@@ -4,24 +4,44 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>audio-ios</title>
+		<script type="module" src="./index.js"></script>
 		<link rel="stylesheet" href="../../style.css" />
-	</head>
-	<body>
 		<style>
-			main {
+			main.container {
+				display: flex;
 				flex-direction: column;
 				gap: 1rem;
 				align-items: center;
 				justify-content: center;
 			}
 		</style>
-		<main>
+	</head>
+	<body>
+		<main class="container">
+			<h1>IOS(Safari, mac, etc...)에서 오디오 재생 문제</h1>
+			<ul>
+				<li>사용자의 상호작용 없이는 음원을 재생할 수 없다.</li>
+				<li>백그라운드 오디오 재생이 제한된다.</li>
+				<li>미디어 세션이 제한되어, 완벽한 제어(소리 중간에 소리를 낸다거나 하는 행위)가 어렵다.</li>
+				<li>동시 재생이 어렵다.</li>
+			</ul>
+			<ul>
+				<li>사용자 상호작용 후 오디오를 재생하도록 보장한다.</li>
+				<li>Web Audio API를 이용하여, 미디어 제어를 한다.</li>
+			</ul>
+
 			<section class="container problematic">
 				<h2>Problematic Version</h2>
 				<button class="btn click">Click</button>
 				<button class="btn correct">Correct</button>
 				<button class="btn incorrect">inCorrect</button>
 				<button class="btn complete">Complete</button>
+				<p>
+					<h3>Audio 객체 이용</h3>
+					<ul>
+						<li></li>
+					</ul>
+				</p>
 			</section>
 
 			<section class="container revised">
@@ -30,6 +50,12 @@
 				<button class="btn correct">Correct</button>
 				<button class="btn incorrect">inCorrect</button>
 				<button class="btn complete">Complete</button>
+				<p></p>
+					<h3>Web Audio API</h3>
+					<ul>
+						<li></li>
+					</ul>
+				</p>
 			</section>
 		</main>
 	</body>
