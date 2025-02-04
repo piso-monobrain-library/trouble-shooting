@@ -33,6 +33,7 @@ main.root {
 
 	padding: 1rem;
 }
+
 main.root ul {
 	display: flex;
 	flex-direction: column;
