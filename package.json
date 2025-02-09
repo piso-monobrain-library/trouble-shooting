@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"build": "rm -rf build/ && node core/init.js && cp -r src/* build/",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
+		"start": "npm run predeploy && npm run deploy"
+	},
+	"homepage": "https://piso-monobrain-library.github.io/trouble-shooting",
+	"devDependencies": {
+		"gh-pages": "^6.3.0"
+	}
+}
