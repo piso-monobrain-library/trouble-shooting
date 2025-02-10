@@ -27,6 +27,7 @@ function Sound() {
 	 * @param {string} url - 사운드 파일 경로
 	 */
 	function load(id, url) {
+		console.log(id, url);
 		fetch(url)
 			.then((response) => response.arrayBuffer())
 			.then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
@@ -152,3 +153,14 @@ function Sound() {
 		backward,
 	};
 }
+
+const soundManager = Sound();
+soundManager.load('bgm', './sounds/bg.mp3');
+soundManager.load('effect', './sounds/click.mp3');
+
+document.querySelector('.btn.bgm').addEventListener('click', () => {
+	soundManager.play('bgm', true);
+});
+document.querySelector('.btn.click').addEventListener('click', () => {
+	soundManager.play('effect');
+});
