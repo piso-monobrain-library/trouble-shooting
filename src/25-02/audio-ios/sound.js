@@ -1,58 +1,3 @@
-# IOS(Safari, mac, etc...)에서 오디오 재생 문제
-
-## 주요 문제점
-
--   사용자의 상호작용 없이는 음원을 재생할 수 없다.
--   백그라운드 오디오 재생이 제한된다.
--   미디어 세션이 제한되어, 완벽한 제어(소리 중간에 소리를 낸다거나 하는 행위)가 어렵다.
--   동시 재생이 어렵다.
-
-## 해결 방안
-
--   사용자 상호작용 후 오디오를 재생하도록 보장한다.
--   Web Audio API를 이용하여, 미디어 제어를 한다.
-
-## 문제가 있는 버전 (Audio 객체 이용)
-
-```js
-const _audio = new Audio('/path/sound.mp3');
-_audio.currentTime = 0;
-_audio.play();
-_audio.addEventListener('play', () => {}, { once: true });
-_audio.addEventListener('ended', () => {}, { once: true });
-```
-
-## 개선된 버전 (Web Audio API)
-
-```js
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-function play(sound) {
-	audioContext.resume().then(() => {
-		const url = '/path/sound.mp3';
-		fetch(url)
-			.then((response) => response.arrayBuffer())
-			.then((data) => audioContext.decodeAudioData(data))
-			.then((buffer) => {
-				const source = audioContext.createBufferSource();
-				source.buffer = buffer;
-				source.connect(audioContext.destination);
-				source.start(0);
-			})
-			.catch((err) => console.error('Audio playback failed:', err));
-	});
-}
-```
-
-### 개선된 버전의 장점
-
--   더 정교한 오디오 제어가 가능
--   여러 소리를 동시에 재생 가능
--   오디오 처리와 조작이 더 유연함
--   iOS Safari에서도 안정적으로 작동
-
-## 사용할 수 있는 객체
-
-```javascript
 /**
  * 웹 페이지의 모든 사운드를 관리하는 클래스
  * 여러 사운드를 동시에 재생하고 제어할 수 있습니다.
@@ -207,4 +152,3 @@ class Sound {
 }
 
 export default Sound;
-```
